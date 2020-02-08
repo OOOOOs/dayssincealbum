@@ -1,0 +1,64 @@
+ <!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			body{
+				font-family: monospace;
+				background-color:#FEFED8;
+			}
+
+			img{
+				height: 25%;
+				width: 25%;
+				border-style: solid;
+  				border-width: 2px;
+  				transform: scale;
+			}
+
+			.contenido{
+				text-align: center;
+			}
+
+			.fecha_esc{
+				font-size: 18px;
+			}
+
+			.calc{
+				font-size:15px;
+			}
+
+		</style>
+	</head>
+	<body>
+	<div class="contenido">
+		<h1>Days since Gimme Shelter</h1>
+		<img src="let.jpg"/>
+		<p>
+			<span class="fecha_esc" id='gimme'></span><span class="fecha_esc" id='data'> - </span>
+			</br></br>
+			<span class="calc" id='dias'></span>
+		</p>
+	</div>
+	<script>
+        var f = new Date();
+        document.getElementById('data').innerHTML += f.toLocaleDateString();
+
+        var gimme = new Date(1969, 12, 5);
+		document.getElementById('gimme').innerHTML += gimme.toLocaleDateString();
+
+		function diff_year_month_day(f, gimme){
+			var time =(gimme.getTime() - f.getTime()) / 1000;
+			var year  = Math.abs(Math.round((time/(60 * 60 * 24))/365.25));
+			var month = Math.abs(Math.round(time/(60 * 60 * 24 * 7 * 4)));
+			var days = Math.abs(Math.round(time/(3600 * 24)));
+			return year + " Years. " + " Or "+month+" Months. Or "+days+" Days.";
+	     }
+ 
+		f = new Date();
+		gimme = new Date("1969-12-5");
+
+		var diff_year_month_day = diff_year_month_day(f, gimme);
+		document.getElementById('dias').innerHTML += diff_year_month_day;
+    </script>
+	</body>
+</html> 
